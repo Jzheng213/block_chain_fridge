@@ -1,22 +1,22 @@
 {
   "development": {
-    "username": "Jack",
-    "password": null,
-    "database": "block_chain_fridge_development",
+    "username": "postgres",
+    "password": "lolsql",
+    "database": "database_development",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
-    "username": "Jack",
-    "password": null,
-    "database": "block_chain_fridge_test",
+    "username": "postgres",
+    "password": "lolsql",
+    "database": "database_test",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
-    "username": "Jack",
-    "password": null,
-    "database": "block_chain_fridge_production",
+    "username": "postgres",
+    "password": "lolsql",
+    "database": "database_production",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }
