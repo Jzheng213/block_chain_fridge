@@ -26,7 +26,10 @@ const backConfig = {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle-back.js"
   },
-  externals: [nodeExternals()]
+  externals: [nodeExternals()],
+  resolve: {
+    extensions: [".js", ".jsx", "*"]
+  }
 };
 
 module.exports = [frontConfig, backConfig];
