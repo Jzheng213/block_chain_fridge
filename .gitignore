@@ -1,1 +1,3 @@
 \node_modules
+\dist\bundle-front.js
+\dist\bundle-back.js
