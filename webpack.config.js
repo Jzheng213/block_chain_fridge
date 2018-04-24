@@ -4,6 +4,7 @@ const webpack = require("webpack");
 
 const frontConfig = {
   target: "web",
+  mode: "development",
   entry: {
     app: ["./frontend/front.js"]
   },
@@ -19,6 +20,7 @@ const frontConfig = {
 
 const backConfig = {
   target: "node",
+  mode: "development",
   entry: {
     app: ["./back.js"]
   },

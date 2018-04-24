@@ -3,9 +3,15 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "DEBUG=block-chain-fridge:* node ./bin/www"
+    "start": "DEBUG=block-chain-fridge:* node ./bin/www",
+    "webpack": "webpack --watch --config webpack.config.js"
   },
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.16.0",
@@ -14,17 +20,12 @@
     "morgan": "~1.9.0",
     "pg": "^7.4.1",
     "pg-hstore": "^2.3.2",
-    "react": "^16.3.2"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.4",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
+    "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-hot-loader": "^4.1.1",
     "sequelize": "^4.37.6",
+    "sequelize-cli": "^4.0.0",
     "webpack": "^4.6.0"
-  }
+  },
+  "devDependencies": {}
 }
