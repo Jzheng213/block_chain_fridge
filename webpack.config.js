@@ -6,11 +6,23 @@ const frontConfig = {
   target: "web",
   mode: "development",
   entry: {
-    app: ["./frontend/front.js"]
+    app: ["./frontend/front.jsx"]
   },
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle-front.js"
+  },
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['react', 'env']
+        }
+      }
+    ]
   },
   devtool: "inline-source-map",
   resolve: {
