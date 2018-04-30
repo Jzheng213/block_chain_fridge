@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "DEBUG=block-chain-fridge:* node ./bin/www",
-    "webpack": "webpack --watch --config webpack.config.js"
+    "webpack": "webpack --watch --config webpack.config.js",
+    "build": "webpack"
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
@@ -26,6 +27,7 @@
     "sequelize": "^4.37.6",
     "sequelize-cli": "^4.0.0",
     "webpack": "^4.6.0",
+    "webpack-cli": "^2.1.2",
     "webpack-node-externals": "^1.7.2"
   },
   "devDependencies": {}
