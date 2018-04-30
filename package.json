@@ -2,10 +2,11 @@
   "name": "block-chain-fridge",
   "version": "0.0.0",
   "private": true,
+  "proxy": "http://localhost:5000/",
   "scripts": {
-    "start": "DEBUG=block-chain-fridge:* node ./bin/www",
     "webpack": "webpack --watch --config webpack.config.js",
-    "build": "webpack"
+    "build": "webpack",
+    "start": "nodemon dist/bundle-back.js"
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
@@ -20,6 +21,7 @@
     "jade": "~1.11.0",
     "lodash": "^4.17.10",
     "morgan": "~1.9.0",
+    "nodemon": "^1.17.3",
     "pg": "^7.4.1",
     "pg-hstore": "^2.3.2",
     "react": "^16.3.2",

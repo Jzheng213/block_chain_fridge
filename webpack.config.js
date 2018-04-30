@@ -34,7 +34,7 @@ const backConfig = {
   target: "node",
   mode: "development",
   entry: {
-    app: ["./back.js"]
+    app: ["./server/back.js"]
   },
   output: {
     path: path.resolve(__dirname, "dist"),
