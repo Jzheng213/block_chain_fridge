@@ -1,9 +1,36 @@
-import React from 'react';
+import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import { fetchUsers } from '../../actions/user_actions';
+import { asArray } from '../../reducers/users/selectors';
 
-const LandingPage = () => {
-  <div>
-    <h1>Block Chain Fridge!</h1>
-  </div>
+const mapStateToProps = state => {
+  const users = asArray(state.entities.users);
+  return {
+    users
+  }
 }
 
-export default LandingPage;
+const mapDispatchToProps = dispatch => {
+  return {
+    requestUsers: () => dispatch(fetchUsers())
+  }
+}
+
+class LandingPage extends Component {
+  componentDidMount(){
+    this.props.requestUsers();
+  }
+  render(){
+    return(
+      <ul>
+        {
+          this.props.users.map(user => {
+            return <li key={user.id}>{user.username}</li>
+          })
+        }
+      </ul>
+    )
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LandingPage);
