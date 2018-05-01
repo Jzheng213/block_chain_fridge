@@ -8,11 +8,9 @@ const router = express.Router();
 router.get('/', function(req, res, next) {
 
   model.user.findAll({
-    attributes: ['userName']
-  }).then( data => {
-    return data
-    }
-  );
+    attributes: ['id', 'userName']
+  }).then( data => res.json( data ));
 });
 
 module.exports = router;
+  

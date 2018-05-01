@@ -25,7 +25,7 @@ class LandingPage extends Component {
       <ul>
         {
           this.props.users.map(user => {
-            return <li key={user.id}>{user.username}</li>
+            return <li key={user.id}>{user.userName}</li>
           })
         }
       </ul>
