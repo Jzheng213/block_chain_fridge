@@ -5,7 +5,7 @@
   "scripts": {
     "webpack": "webpack --watch --config webpack.config.js",
     "build": "webpack",
-    "start": "nodemon --inspect-brk dist/bundle-back.js"
+    "start": "nodemon --inspect dist/bundle-back.js"
   },
   "dependencies": {
     "babel-cli": "^6.26.0",

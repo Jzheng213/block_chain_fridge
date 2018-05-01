@@ -5,7 +5,6 @@ const Sequelize = require('sequelize');
 let models = {};
 
 function getModels (config, force = false) {
-  debugger;
   if (Object.keys(models).length && !force) {
     return models;
   }

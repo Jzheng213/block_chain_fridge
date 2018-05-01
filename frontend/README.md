@@ -1646,7 +1646,7 @@ Add the following to the `scripts` section in your project's `package.json`
     "test:debug": "react-scripts --inspect-brk test --runInBand --env=jsdom"
   }
 ```
-Place `debugger;` statements in any test and run:
+Place `` statements in any test and run:
 ```bash
 $ npm run test:debug
 ```

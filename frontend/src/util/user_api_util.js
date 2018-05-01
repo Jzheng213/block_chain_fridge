@@ -1,5 +1,8 @@
 export const fetchUsers = () => {
-  return fetch('/api/users').then(res => res.json());
+  return fetch('/api/users').then(res => {
+    console.log(res);
+    return res.json()}
+  );
 };
 
 export const fetchUser = (id) => {
