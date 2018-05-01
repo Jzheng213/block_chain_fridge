@@ -1,8 +1,12 @@
 var express = require('express');
 var router = express.Router();
+const { User } = require('../db/models');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
+  User.findAll({
+
+  })
   res.json([
     {id: 1, username: "Brendan"},
     {id: 2, username: "Ilya"},
