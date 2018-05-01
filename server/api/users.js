@@ -1,19 +1,15 @@
-var express = require('express');
-var router = express.Router();
-const { User } = require('../db/models');
+const express = require('express');
+const model = require('../models');
+
+const router = express.Router();
+
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  User.findAll({
-
-  })
-  res.json([
-    {id: 1, username: "Brendan"},
-    {id: 2, username: "Ilya"},
-    {id: 3, username: "Michael"},
-    {id: 4, username: "Jack"},
-    {id: 5, username: "Keon"},
-  ])
+  debugger;
+  model.user.findAll({
+    attributes: ['userName']
+  });
 });
 
 module.exports = router;
