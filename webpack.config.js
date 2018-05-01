@@ -6,7 +6,7 @@ const frontConfig = {
   target: "web",
   mode: "development",
   entry: {
-    app: ["./frontend/front.jsx"]
+    app: ["./frontend/src/index.js"]
   },
   output: {
     path: path.resolve(__dirname, "dist"),
