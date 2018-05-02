@@ -1,10 +1,8 @@
-A Blockchain implementation
-Summary
+Setup: 
+npm install
 
-How It Works:
-
-Implementation:
-
-Current Apps:
-  
-Smart Contracts:
+sequelize db:migrate
+sequelize db:seed:all
+npm run start - to run back end server
+cd into frontend and run
+npm run start - to run front end server
