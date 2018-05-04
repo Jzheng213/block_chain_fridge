@@ -10,10 +10,16 @@ Setup:
 4. cd to base dir
    * npm build
    * npm webpack
-   * npm start - to run back end server
+
 
 
 5. cd into frontend and run
    * npm install
    * npm build
-   * npm start - to run front end server
+   
+
+6. Starting Server
+   * in base dir run
+     * npm start - to run back end server
+   * in frontend dir run
+     * npm start - to run front end server
