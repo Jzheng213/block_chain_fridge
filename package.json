@@ -5,10 +5,11 @@
   "scripts": {
     "webpack": "webpack --watch --config webpack.config.js",
     "webpack-build": "webpack",
-    "setup": "npm run setup-db && npm run webpack-build && npm run build --prefix ./frontend",
+    "installs": "npm install && npm install --prefix './frontend'",
+    "setup": "npm run installs && npm run setup-db && npm run webpack-build && npm run build --prefix ./frontend",
     "setup-db": "sequelize db:migrate --migrations-path ./server/migrations && sequelize db:seed:all --seeders-path ./server/seeders",
     "start-server": "nodemon --inspect dist/bundle-back.js",
-    "start-client": "npm run start --prefix ./frontend",
+    "start-client": "cd frontend && npm start",
     "start": "concurrently --kill-others \"npm run webpack\" \"npm run start-server\" \"npm run start-client\""
   },
   "dependencies": {
