@@ -1,6 +1,6 @@
 Setup: 
 1. npm install (Backend)
-2. cd into front end & npm install  (FrontEnd)
+2. cd into frontend & npm install  (FrontEnd)
 3. install sequelize-cli -global
 4. cd into base dir & npm setup (this should run webpack after setup)
 5. go to server/config/config.json and change your username to match your default psql username
