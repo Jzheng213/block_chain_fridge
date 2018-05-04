@@ -5,8 +5,9 @@ npm install
 install sequelize-cli -global
 
 
-cd into server
-sequelize init
+cd into server folder
+
+run 
 
 sequelize db:migrate
 
