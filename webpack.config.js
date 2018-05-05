@@ -46,4 +46,4 @@ const backConfig = {
   }
 };
 
-module.exports = [frontConfig, backConfig];
+module.exports = [backConfig];
