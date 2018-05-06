@@ -7,8 +7,10 @@ export const login = (data) => {
 };
 
 export const signup = (data) => {
-  debugger;
   return fetch('/auth/signup', {
+    headers: {
+      'content-type': 'application/json'
+    },
     method: 'POST', // or 'PUT'
     body: JSON.stringify(data), // data can be `string` or {object}!
   }).then(res => res.json());

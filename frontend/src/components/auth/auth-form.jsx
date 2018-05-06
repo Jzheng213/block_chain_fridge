@@ -20,8 +20,8 @@ const mapSignup = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    login: (email, password, formName) => dispatch(login(email, password, formName)),
-    signup: (email, password, formName) => dispatch(signup(email, password, formName))
+    login: (data) => dispatch(login(data)),
+    signup: (data) => dispatch(signup(data))
   }
 }
 
@@ -33,7 +33,9 @@ const AuthForm = (props) => {
     const formName = e.target.name
     const email = e.target.email.value
     const password = e.target.password.value
-    signup(email, password, formName);
+    const first_name = 'Jack'
+    const last_name = 'Zheng'
+    signup({email, password, first_name, last_name});
   }
 
   return (

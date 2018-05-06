@@ -1,15 +1,18 @@
 const express = require('express');
+const path = require('path');
 const morgan = require('morgan');
-const app = express();
 const port = process.env.PORT || 5000;
 const passport = require('passport');
-const session = require('express-session');
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const db = require('./db');
+const model = require('./models');
 const bodyParser = require('body-parser');
 const compression = require('compression');
 
-const sessionStore = new SequelizeStore({ db });
+
+const app = express();
+const session = require('express-session');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
+const sessionStore = new SequelizeStore({ db: model.sequelize });
 module.exports = app;
 
 app.get('/', (req, res) => res.send('fridge!'));
@@ -24,14 +27,14 @@ passport.deserializeUser((id, done) =>
 const createApp = () => {
 
   // logging middleware
-  app.use(morgan('dev'))
+  app.use(morgan('dev'));
 
   // body parsing middleware
-  app.use(bodyParser.json())
-  app.use(bodyParser.urlencoded({ extended: true }))
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({ extended: true }));
 
   // compression middleware
-  app.use(compression())
+  app.use(compression());
 
   // session middleware with passport
   app.use(session({
@@ -39,16 +42,17 @@ const createApp = () => {
     store: sessionStore,
     resave: false,
     saveUninitialized: false
-  }))
-  app.use(passport.initialize())
-  app.use(passport.session())
+  }));
+
+  app.use(passport.initialize());
+  app.use(passport.session());
 
   // auth and api routes
-  app.use('/auth', require('./auth'))
-  app.use('/api', require('./api'))
+  app.use('/auth', require('./auth'));
+  app.use('/api', require('./api'));
 
   // static file-serving middleware
-  app.use(express.static(path.join(__dirname, '..', 'public')))
+  app.use(express.static(path.join(__dirname, '..', 'public')));
 
   // any remaining requests with an extension (.js, .css, etc.) send 404
   app.use((req, res, next) => {
@@ -72,15 +76,6 @@ const createApp = () => {
     console.error(err.stack)
     res.status(err.status || 500).send(err.message || 'Internal server error.')
   })
-}
-
-const startListening = () => {
-  // start listening (and create a 'server' object representing our server)
-  const server = app.listen(PORT, () => console.log(`Mixing it up on port ${PORT}`))
-
-  // set up our socket control center
-  const io = socketio(server)
-  require('./socket')(io)
 }
 
 const syncDb = () => db.sync()

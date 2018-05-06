@@ -9,7 +9,7 @@ const backConfig = {
     app: ["./server/back.js"]
   },
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "server"),
     filename: "bundle-back.js"
   },
   externals: [nodeExternals()],
