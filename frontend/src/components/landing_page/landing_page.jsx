@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchUsers } from '../../actions/user_actions';
 import { asArray } from '../../reducers/users/selectors';
 import './landing_page.css';
+import { Signup } from '../auth/auth-form';
 
 const mapStateToProps = state => {
   const users = asArray(state.entities.users);
@@ -17,21 +18,10 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-class LandingPage extends Component {
-  componentDidMount(){
-    this.props.requestUsers();
-  }
-  render(){
-    return(
-      <ul className='super-team'>
-        {
-          this.props.users.map(user => {
-            return <li key={user.id}>{user.userName}</li>
-          })
-        }
-      </ul>
-    )
-  }
+const LandingPage = () => {
+  return(
+    <Signup></Signup>
+  )
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LandingPage);
