@@ -24,6 +24,11 @@ const mapDispatchToProps = dispatch => {
 }
 
 class LandingPage extends Component {
+    state = {
+      ingredients: [],
+      searchQueued: false,
+      ingredient: '',
+    };
 
     componentDidMount(){
       this.props.getCurrentUser();
@@ -33,20 +38,48 @@ class LandingPage extends Component {
       e.preventDefault();
       this.props.logout();
     }
+    handleSearch = (e) => {
+      e.preventDefault();
+      this.setState({searchQueued: true});
+    }
+    handleAddIngredients = (e) => {
+      e.preventDefault();
+      const ingredients = this.state.ingredients.slice();
+      ingredients.push(e.target.ingredient.value);
+      this.setState({ ingredients });
+    }
     render(){
+      const list = this.state.ingredients.join(' ');
       return(
         <div>
           {this.props.currentUser ?
             <div>
               <button onClick={this.handleLogout}>logout</button>
-              <h1>You're logged in {this.props.users[this.props.currentUser].first_name}</h1>
+              <h3>You're logged in as {this.props.users[this.props.currentUser].first_name}</h3>
+
             </div>
             :
             <div>
               <Link to='/login'>Login</Link>
-              <h1>Please login </h1>
+              <h3>Please login </h3>
             </div>
           }
+          <form onSubmit={this.handleAddIngredients}>
+            <label htmlFor='ingredient'></label>
+            <input name='ingredient' type='text'></input>
+            <button type='submit'>add to ingredients</button>
+            {this.state.ingredients.length !== 0 &&
+              <button type='submit' onClick={this.handleSearch}>search recipes</button>
+            }
+          </form>
+          {this.state.searchQueued && <h2>Search Result with {list}</h2>}
+          <ul>
+            {
+              this.state.ingredients.map((ingredient, idx) => {
+                return <li key={idx}>{ingredient}</li>
+              })
+            }
+          </ul>
         </div>
       )
     }
