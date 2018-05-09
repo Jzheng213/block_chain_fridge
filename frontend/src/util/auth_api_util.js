@@ -23,3 +23,10 @@ export const logout = () => {
     url: '/auth/logout',
   });
 };
+
+export const fetchCurrentUser = () => {
+  return $.ajax({
+    method: 'GET',
+    url: '/auth/currentSession',
+  });
+};

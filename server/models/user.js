@@ -36,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
 
   // instance methods
   User.prototype.correctPassword = function (candidatePwd) {
-    debugger;
+    
     return User.encryptPassword(candidatePwd, this.salt()) === this.password();
   };
 
@@ -46,7 +46,7 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   User.encryptPassword = function (plainText, salt) {
-    debugger;
+    
     return crypto
       .createHash('RSA-SHA256')
       .update(plainText)

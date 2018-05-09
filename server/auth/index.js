@@ -4,7 +4,7 @@ const { user } = require('../models');
 module.exports = router;
 
 router.post('/login', (req, res, next) => {
-  debugger;
+
   user.findOne({ where: { email: req.body.email } })
     .then((user) => {
       if (!user) {
@@ -45,6 +45,6 @@ router.post('/logout', (req, res) => {
   res.json(req.user);
 });
 
-router.get('/me', (req, res) => {
+router.get('/currentSession', (req, res) => {
   res.json(req.user);
 });

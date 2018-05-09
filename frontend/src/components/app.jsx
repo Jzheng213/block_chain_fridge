@@ -12,13 +12,15 @@ import Login from './auth/login_form';
 import SignUp from './auth/signup_form';
 // import Main from './main/main';
 
+
+
 const App = () => {
   return(
     <div>
       <Switch>
+        <Route exact path="/" component={LandingPage} />
         <AuthRoute exact path='/login' component={ Login } />
         <AuthRoute exact path='/signup' component={ SignUp } />
-        <ProtectedRoute path="/" component={LandingPage} />
       </Switch>
     </div>
   );
