@@ -19,21 +19,15 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: { notEmpty: true },
     },
-    password_digest: {
+    password: {
       type: DataTypes.STRING,
       validate: { notEmpty: true },
-    },
-    session_token: {
-      type: DataTypes.STRING,
-    },
-    password: {
-      type: DataTypes.VIRTUAL,
       get() {
         return () => this.getDataValue('password');
       },
     },
     salt: {
-      type: DataTypes.VIRTUAL,
+      type: DataTypes.STRING,
       get() {
         return () => this.getDataValue('salt');
       },
@@ -42,6 +36,7 @@ module.exports = (sequelize, DataTypes) => {
 
   // instance methods
   User.prototype.correctPassword = function (candidatePwd) {
+    debugger;
     return User.encryptPassword(candidatePwd, this.salt()) === this.password();
   };
 
@@ -51,6 +46,7 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   User.encryptPassword = function (plainText, salt) {
+    debugger;
     return crypto
       .createHash('RSA-SHA256')
       .update(plainText)
@@ -61,12 +57,12 @@ module.exports = (sequelize, DataTypes) => {
   // hooks
   const setSaltAndPassword = (user) => {
     user.salt = User.generateSalt();
-    user.password_digest = User.encryptPassword(user.password(), user.salt());
+    user.password = User.encryptPassword(user.password(), user.salt());
   };
   const newSessionToken = (user) => {
     user.session_token = User.generateSalt();
   }
-  
+
   User.beforeCreate(setSaltAndPassword);
   User.beforeCreate(newSessionToken);
 

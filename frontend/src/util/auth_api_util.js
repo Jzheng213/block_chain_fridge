@@ -1,17 +1,25 @@
+import $ from 'jquery';
 
 export const login = (data) => {
-  return fetch('/auth/login', {
-    method: 'POST', // or 'PUT'
-    body: JSON.stringify(data), // data can be `string` or {object}!
-  }).then(res => res.json());
+  return $.ajax({
+    method: 'POST',
+    url: '/auth/login',
+    data,
+  });
 };
 
+
 export const signup = (data) => {
-  return fetch('/auth/signup', {
-    headers: {
-      'content-type': 'application/json'
-    },
-    method: 'POST', // or 'PUT'
-    body: JSON.stringify(data), // data can be `string` or {object}!
-  }).then(res => res.json());
+  return $.ajax({
+    method: 'POST',
+    url: '/auth/signup',
+    data,
+  });
+};
+
+export const logout = () => {
+  return $.ajax({
+    method: 'POST',
+    url: '/auth/logout',
+  });
 };

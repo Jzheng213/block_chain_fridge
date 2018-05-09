@@ -1,46 +1,37 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { login, signup } from '../../util/auth_api_util.js';
+import { Link } from 'react-router-dom';
+import { login } from '../../actions/auth_actions.js';
 
 const mapLogin = (state) => {
   return {
     name: 'login',
-    displayName: 'Login',
-    error: 'add error'
-  }
-}
-
-const mapSignup = (state) => {
-  return {
-    name: 'signup',
-    displayName: 'Sign Up',
     error: 'add error'
   }
 }
 
 const mapDispatch = (dispatch) => {
   return {
-    login: (data) => dispatch(login(data)),
-    signup: (data) => dispatch(signup(data))
+    login: (data) => dispatch(login(data))
   }
 }
 
 const AuthForm = (props) => {
-  const {name, displayName, error, signup} = props
+  const {name,  error, login} = props
 
   const handleSubmit = (e) => {
     e.preventDefault()
     const formName = e.target.name
     const email = e.target.email.value
     const password = e.target.password.value
-    const first_name = 'Jack'
-    const last_name = 'Zheng'
-    signup({email, password, first_name, last_name});
+    login({ email, password });
   }
 
   return (
     <div>
       <h1>Welcome to Block Chain Fridge</h1>
+      <Link to="/signup">Sign Up</Link>
+      <h2>Login</h2>
       <form onSubmit={handleSubmit} name={name}>
         <div>
           <label htmlFor="email"><small>Email</small></label>
@@ -51,7 +42,7 @@ const AuthForm = (props) => {
           <input name="password" type="password" />
         </div>
         <div>
-          <button type="submit">{displayName}</button>
+          <button type="submit">Login</button>
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
@@ -59,5 +50,4 @@ const AuthForm = (props) => {
   )
 }
 
-export const Login = connect(mapLogin, mapDispatch)(AuthForm)
-export const Signup = connect(mapSignup, mapDispatch)(AuthForm)
+export default connect(mapLogin, mapDispatch)(AuthForm)

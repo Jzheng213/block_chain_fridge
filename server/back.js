@@ -2,13 +2,12 @@ const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
 const port = process.env.PORT || 5000;
-const passport = require('passport');
 const model = require('./models');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const compression = require('compression');
-
-
 const app = express();
+const passport = require('passport');
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
@@ -19,13 +18,13 @@ app.get('/', (req, res) => res.send('fridge!'));
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
 // passport registration
-passport.serializeUser((user, done) => done(null, user.id))
+passport.serializeUser((user, done) => done(null, user.id));
 passport.deserializeUser((id, done) =>
-  models.user.findById(id)
+  model.user.findById(id)
     .then(user => done(null, user))
     .catch(done));
-const createApp = () => {
 
+const createApp = () => {
   // logging middleware
   app.use(morgan('dev'));
 
@@ -37,11 +36,12 @@ const createApp = () => {
   app.use(compression());
 
   // session middleware with passport
+  app.use(cookieParser());
   app.use(session({
-    secret: 'my best friend is Cody',
+    secret: 'appAcademy',
     store: sessionStore,
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
   }));
 
   app.use(passport.initialize());
@@ -78,7 +78,7 @@ const createApp = () => {
   })
 }
 
-const syncDb = () => db.sync()
+sessionStore.sync()
 
 // This evaluates as true when this file is run directly from the command line,
 // i.e. when we say 'node server/index.js' (or 'nodemon server/index.js', or 'nodemon server', etc)
@@ -88,7 +88,6 @@ if (require.main === module) {
   sessionStore.sync()
     .then(syncDb)
     .then(createApp)
-    .then(startListening)
 } else {
   createApp()
 }
