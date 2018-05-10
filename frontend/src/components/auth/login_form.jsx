@@ -6,7 +6,7 @@ import { login } from '../../actions/auth_actions.js';
 const mapLogin = (state) => {
   return {
     name: 'login',
-    error: 'add error'
+    errorMessage: state.errors.sessions.message
   }
 }
 
@@ -17,7 +17,7 @@ const mapDispatch = (dispatch) => {
 }
 
 const AuthForm = (props) => {
-  const {name,  error, login} = props
+  const {name,  errorMessage, login} = props
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -44,7 +44,7 @@ const AuthForm = (props) => {
         <div>
           <button type="submit">Login</button>
         </div>
-        {error && error.response && <div> {error.response.data} </div>}
+        <p>{errorMessage}</p>
       </form>
     </div>
   )

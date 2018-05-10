@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const mapSignup = (state) => {
   return {
     name: 'signup',
-    error: 'add error'
+    errorMessage: state.errors.users.message,
   }
 }
 
@@ -17,7 +17,7 @@ const mapDispatch = (dispatch) => {
 }
 
 const AuthForm = (props) => {
-  const {name, error, signup} = props
+  const {name, errorMessage, signup} = props
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -34,6 +34,7 @@ const AuthForm = (props) => {
       <h1>Welcome to Block Chain Fridge</h1>
       <Link to="/login">Log In</Link>
       <h2>Sign Up</h2>
+
       <form onSubmit={handleSubmit} name={name}>
         <div>
           <label htmlFor="email"><small>Email</small></label>
@@ -54,7 +55,7 @@ const AuthForm = (props) => {
         <div>
           <button type="submit">Sign Up</button>
         </div>
-        {error && error.response && <div> {error.response.data} </div>}
+        <p>{errorMessage}</p>
       </form>
     </div>
   )

@@ -61,7 +61,7 @@ class LandingPage extends Component {
     }
 
     render(){
-      const list = this.state.ingredients.join(' ');
+      const list = this.state.ingredients.join(', ');
 
       return(
         <div>
@@ -69,7 +69,7 @@ class LandingPage extends Component {
           {this.props.currentUser ?
             <React.Fragment>
               <button onClick={this.handleLogout}>logout</button>
-              <h4>Welcome back {this.props.users[this.props.currentUser].first_name}</h4>
+              <h4>Welcome {this.props.users[this.props.currentUser].first_name}</h4>
             </React.Fragment> :
             <React.Fragment>
               <Link to='/login'>Login</Link>
