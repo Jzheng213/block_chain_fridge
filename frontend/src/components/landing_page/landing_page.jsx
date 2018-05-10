@@ -27,7 +27,8 @@ class LandingPage extends Component {
     state = {
       ingredients: [],
       searchQueued: false,
-      ingredient: '',
+      input: '',
+      buttonLabel: 'What do you have?',
     };
 
     componentDidMount(){
@@ -38,36 +39,47 @@ class LandingPage extends Component {
       e.preventDefault();
       this.props.logout();
     }
+
     handleSearch = (e) => {
       e.preventDefault();
       this.setState({searchQueued: true});
     }
+
+    handleInput = (e) => {
+      e.preventDefault();
+      this.setState({ input: e.currentTarget.value })
+    }
+
     handleAddIngredients = (e) => {
       e.preventDefault();
       const ingredients = this.state.ingredients.slice();
       ingredients.push(e.target.ingredient.value);
-      this.setState({ ingredients });
+      this.setState({ ingredients,
+        buttonLabel:'add more ingredients',
+        input: '',
+       });
     }
+
     render(){
       const list = this.state.ingredients.join(' ');
+
       return(
         <div>
+          <h1>Block Chain Fridge</h1>
           {this.props.currentUser ?
-            <div>
+            <React.Fragment>
               <button onClick={this.handleLogout}>logout</button>
-              <h3>You're logged in as {this.props.users[this.props.currentUser].first_name}</h3>
-
-            </div>
-            :
-            <div>
+              <h4>Welcome back {this.props.users[this.props.currentUser].first_name}</h4>
+            </React.Fragment> :
+            <React.Fragment>
               <Link to='/login'>Login</Link>
-              <h3>Please login </h3>
-            </div>
+              <h4>Hello Guest</h4>
+            </React.Fragment>
           }
           <form onSubmit={this.handleAddIngredients}>
             <label htmlFor='ingredient'></label>
-            <input name='ingredient' type='text'></input>
-            <button type='submit'>add to ingredients</button>
+            <input name='ingredient' type='text' onChange={this.handleInput} value={this.state.input}></input>
+            <button type='submit'>{this.state.buttonLabel}</button>
             {this.state.ingredients.length !== 0 &&
               <button type='submit' onClick={this.handleSearch}>search recipes</button>
             }
