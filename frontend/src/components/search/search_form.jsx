@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SearchResult from './search_form';
+import SearchResult from './search_result';
 
 class Search extends Component {
 
@@ -32,16 +32,20 @@ class Search extends Component {
 
   render(){
     return(
-      <React.Fragment>
-      <form onSubmit={this.handleAddIngredients}>
-        <label htmlFor='ingredient'></label>
-        <input name='ingredient' type='text' onChange={this.handleInput} value={this.state.input}></input>
-        <button type='submit'>{this.state.buttonLabel}</button>
-        {this.state.ingredients.length !== 0 &&
-          <button type='submit' onClick={this.handleSearch}>search recipes</button>
-        }
-      </form>
-      </React.Fragment>
+      <div>
+        <form onSubmit={this.handleAddIngredients}>
+          <label htmlFor='ingredient'></label>
+          <input name='ingredient' type='text' onChange={this.handleInput} value={this.state.input}></input>
+          <button type='submit'>{this.state.buttonLabel}</button>
+          {this.state.ingredients.length !== 0 &&
+            <button type='submit' onClick={this.handleSearch}>search recipes</button>
+          }
+        </form>
+        <SearchResult
+          ingredients={this.state.ingredients}
+          searchQueued={this.state.searchQueued}
+          />
+      </div>
     )
   }
 }

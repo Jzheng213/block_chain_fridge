@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import './landing_page.css';
 import Login from '../auth/login_form';
 import NavBar from '../navbar/navbar';
+import SearchForm from '../search/search_form';
 import { fetchCurrentUser } from '../../actions/auth_actions';
 import { fetchUsers } from '../../actions/user_actions';
 
@@ -33,48 +34,13 @@ class LandingPage extends Component {
       this.props.getCurrentUser();
     }
 
-    handleSearch = (e) => {
-      e.preventDefault();
-      this.setState({searchQueued: true});
-    }
-
-    handleInput = (e) => {
-      e.preventDefault();
-      this.setState({ input: e.currentTarget.value })
-    }
-
-    handleAddIngredients = (e) => {
-      e.preventDefault();
-      const ingredients = this.state.ingredients.slice();
-      ingredients.push(e.target.ingredient.value);
-      this.setState({ ingredients,
-        buttonLabel:'add more ingredients',
-        input: '',
-       });
-    }
-
     render(){
       const list = this.state.ingredients.join(', ');
       return(
         <div>
           <NavBar />
           <h1>Block Chain Fridge</h1>
-          <form onSubmit={this.handleAddIngredients}>
-            <label htmlFor='ingredient'></label>
-            <input name='ingredient' type='text' onChange={this.handleInput} value={this.state.input}></input>
-            <button type='submit'>{this.state.buttonLabel}</button>
-            {this.state.ingredients.length !== 0 &&
-              <button type='submit' onClick={this.handleSearch}>search recipes</button>
-            }
-          </form>
-          {this.state.searchQueued && <h2>Search Result with {list}</h2>}
-          <ul>
-            {
-              this.state.ingredients.map((ingredient, idx) => {
-                return <li key={idx}>{ingredient}</li>
-              })
-            }
-          </ul>
+          <SearchForm />
         </div>
       )
     }
