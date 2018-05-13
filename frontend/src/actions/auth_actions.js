@@ -19,13 +19,14 @@ export const receiveSignupErrors = errors => ({
   errors,
 });
 
-export const signup = user => dispatch => (
+export const signup = user => dispatch => {
+
   APIUtil.signup(user).then(user => {
     return dispatch(receiveCurrentUser(user));
   }, err => {
     return dispatch(receiveSignupErrors(err.responseText))
   })
-);
+};
 
 export const login = user => dispatch => (
   APIUtil.login(user).then(user => (

@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchUsers } from '../../actions/user_actions';
-import { logout, fetchCurrentUser } from '../../actions/auth_actions';
-import { asArray } from '../../reducers/users/selectors';
 import './landing_page.css';
 import Login from '../auth/login_form';
-
+import NavBar from '../navbar/navbar';
+import { fetchCurrentUser } from '../../actions/auth_actions';
+import { fetchUsers } from '../../actions/user_actions';
 
 const mapStateToProps = state => {
   return {
@@ -17,11 +16,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    requestUsers: () => dispatch(fetchUsers()),
-    logout: () => dispatch(logout()),
     getCurrentUser: () => dispatch(fetchCurrentUser())
   }
 }
+
 
 class LandingPage extends Component {
     state = {
@@ -33,11 +31,6 @@ class LandingPage extends Component {
 
     componentDidMount(){
       this.props.getCurrentUser();
-    }
-
-    handleLogout = (e) => {
-      e.preventDefault();
-      this.props.logout();
     }
 
     handleSearch = (e) => {
@@ -62,20 +55,10 @@ class LandingPage extends Component {
 
     render(){
       const list = this.state.ingredients.join(', ');
-
       return(
         <div>
+          <NavBar />
           <h1>Block Chain Fridge</h1>
-          {this.props.currentUser ?
-            <React.Fragment>
-              <button onClick={this.handleLogout}>logout</button>
-              <h4>Welcome {this.props.users[this.props.currentUser].first_name}</h4>
-            </React.Fragment> :
-            <React.Fragment>
-              <Link to='/login'>Login</Link>
-              <h4>Hello Guest</h4>
-            </React.Fragment>
-          }
           <form onSubmit={this.handleAddIngredients}>
             <label htmlFor='ingredient'></label>
             <input name='ingredient' type='text' onChange={this.handleInput} value={this.state.input}></input>

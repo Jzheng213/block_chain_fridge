@@ -28,7 +28,7 @@ const AuthForm = (props) => {
     const firstName = e.target.firstName.value;
     const lastName = e.target.lastName.value;
     signup({
-      email, password, firstName, lastName,
+      email, password, first_name: firstName, last_name: lastName,
     });
   };
 
