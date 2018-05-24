@@ -1,5 +1,27 @@
+.navWelcome{
+  grid-area: navWelcome;
+}
+.session{
+  background: white;
+  color:black;
+  grid-area: session;
+}
+
 .navbar{
-  display: flex;
-  flex-direction: row;
-  background: blue;
+  display: grid;
+  align-items: center;
+  grid-gap: 10px;
+  grid-template-areas:
+  "navWelcome"
+  "session";
+}
+
+@media only screen and (min-width: 500px) {
+  .navbar{
+    display: grid;
+    align-items: center;
+    grid-template-columns: 20% auto 20%;
+    grid-template-areas:
+    "navWelcome . session";
+  }
 }

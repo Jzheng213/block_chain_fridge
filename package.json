@@ -6,14 +6,11 @@
     "webpack": "webpack --watch --config webpack.config.js",
     "webpack-build": "webpack",
     "installs": "npm install && npm install --prefix './frontend'",
-    "setup":
-      "npm run installs && npm run setup-db && npm run webpack-build && npm run build --prefix ./frontend",
-    "setup-db":
-      "cd server && sequelize db:create && sequelize db:migrate --migrations-path ./migrations",
+    "setup": "npm run installs && npm run setup-db && npm run webpack-build && npm run build --prefix ./frontend",
+    "setup-db": "cd server && sequelize db:create && sequelize db:migrate --migrations-path ./migrations",
     "start-server": "nodemon --inspect server/bundle-back.js",
     "start-client": "cd frontend && npm start",
-    "start":
-      "concurrently --kill-others \"npm run webpack\" \"npm run start-server\" \"npm run start-client\""
+    "start": "concurrently --kill-others \"npm run webpack\" \"npm run start-server\" \"npm run start-client\""
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
@@ -32,6 +29,7 @@
     "lodash": "^4.17.10",
     "morgan": "~1.9.0",
     "nodemon": "^1.17.3",
+    "normalize.css": "^8.0.0",
     "passport": "^0.4.0",
     "pg": "^7.4.1",
     "pg-hstore": "^2.3.2",

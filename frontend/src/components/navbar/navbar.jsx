@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logout } from '../../actions/auth_actions';
+import NavWelcome from '../util/nav_welcome';
 import './navbar.css';
 
 const mapStateToProps = state => (
@@ -27,14 +28,14 @@ const NavBar = (props) => {
 
   return (
     <div className='navbar'>
+      <NavWelcome currentUser={currentUser} users={users} />
       {currentUser ?
         <React.Fragment>
-          <h4>Welcome {users[currentUser].first_name}</h4>
-          <button onClick={handleLogout}>logout</button>
+          <button onClick={handleLogout} className='session'>logout</button>
         </React.Fragment> :
         <React.Fragment>
-          <Link to='/login'>Login</Link>
-          <h4>Hello Guest</h4>
+          <Link to='/signup' className='session'>Signup</Link>
+          <Link to='/login' className='session'>Login</Link>
         </React.Fragment>}
     </div>
   );

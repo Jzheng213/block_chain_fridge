@@ -11,10 +11,12 @@ import LandingPage from './landing_page/landing_page';
 import Login from './auth/login_form';
 import SignUp from './auth/signup_form';
 // import Main from './main/main';
+import './app.css';
+
 
 const App = () => {
   return(
-    <div>
+    <div id="app">
       <Switch>
         <Route exact path="/" component={LandingPage} />
         <AuthRoute exact path='/login' component={ Login } />

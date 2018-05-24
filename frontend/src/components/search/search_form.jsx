@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SearchResult from './search_result';
+import './search_form.css';
 
 class Search extends Component {
 
@@ -35,10 +36,15 @@ class Search extends Component {
       <div>
         <form onSubmit={this.handleAddIngredients}>
           <label htmlFor='ingredient'></label>
-          <input name='ingredient' type='text' onChange={this.handleInput} value={this.state.input}></input>
-          <button type='submit'>{this.state.buttonLabel}</button>
+          <input className='searchBar'
+            placeholder='add ingredients'
+            name='ingredient'
+            type='text'
+            onChange={this.handleInput}
+            value={this.state.input} />
+          <button type='submit' className='searchButton'>{this.state.buttonLabel}</button>
           {this.state.ingredients.length !== 0 &&
-            <button type='submit' onClick={this.handleSearch}>search recipes</button>
+            <button type='submit' onClick={this.handleSearch} className='searchButton'>search recipes</button>
           }
         </form>
         <SearchResult
