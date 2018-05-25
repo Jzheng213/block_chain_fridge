@@ -5,6 +5,7 @@ import './landing_page.css';
 import Login from '../auth/login_form';
 import NavBar from '../navbar/navbar';
 import SearchForm from '../search/search_form';
+import SearchResult from '../search/search_result';
 import { fetchCurrentUser } from '../../actions/auth_actions';
 import { fetchUsers } from '../../actions/user_actions';
 
@@ -17,15 +18,13 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getCurrentUser: () => dispatch(fetchCurrentUser())
+    getCurrentUser: () => dispatch(fetchCurrentUser()),
   }
 }
 
 
 class LandingPage extends Component {
     state = {
-      ingredients: [],
-      searchQueued: false,
       input: '',
       buttonLabel: 'What do you have?',
     };
@@ -35,12 +34,12 @@ class LandingPage extends Component {
     }
 
     render(){
-      const list = this.state.ingredients.join(', ');
       return(
         <div>
           <NavBar />
-          <h1>FRIDGE</h1>
+          <h1>PANTRY</h1>
           <SearchForm />
+          <SearchResult />
         </div>
       )
     }

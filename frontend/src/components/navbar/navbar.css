@@ -1,10 +1,15 @@
 .navWelcome{
   grid-area: navWelcome;
+  color: grey;
 }
+
 .session{
+  text-decoration: none;
   background: white;
-  color:black;
+  color: grey;
   grid-area: session;
+  border: none;
+  cursor: pointer;
 }
 
 .navbar{
@@ -20,8 +25,8 @@
   .navbar{
     display: grid;
     align-items: center;
-    grid-template-columns: 20% auto 20%;
+    grid-template-columns: auto 20% 5em;
     grid-template-areas:
-    "navWelcome . session";
+    ". navWelcome session";
   }
 }

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logout } from '../../actions/auth_actions';
 import NavWelcome from '../util/nav_welcome';
+import SearchForm from '../search/search_form';
 import './navbar.css';
 
 const mapStateToProps = state => (
@@ -28,6 +29,7 @@ const NavBar = (props) => {
 
   return (
     <div className='navbar'>
+      <SearchForm />
       <NavWelcome currentUser={currentUser} users={users} />
       {currentUser ?
         <React.Fragment>
