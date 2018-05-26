@@ -26,7 +26,6 @@ class Search extends Component {
 
   state = {
     input: '',
-    buttonLabel: 'What do you have?',
   };
 
     handleSearch = (e) => {
@@ -45,12 +44,13 @@ class Search extends Component {
       ingredients.push(e.target.ingredient.value);
       this.props.updateIngredients(ingredients);
       this.setState({
-        buttonLabel:'add more ingredients',
         input: '',
        });
     }
 
   render(){
+    const ingredients = this.props.ingredients;
+    const buttonLabel = ingredients.length === 0 ? 'What do you have?' : 'add more ingredients';
     return(
       <div>
         <form onSubmit={this.handleAddIngredients}>
@@ -61,7 +61,7 @@ class Search extends Component {
             type='text'
             onChange={this.handleInput}
             value={this.state.input} />
-          <button type='submit' className='searchButton'>{this.state.buttonLabel}</button>
+          <button type='submit' className='searchButton'>{buttonLabel}</button>
           { this.props.ingredients.length !== 0 &&
             <button type='submit' onClick={this.handleSearch} className='searchButton'>search recipes</button>
           }
