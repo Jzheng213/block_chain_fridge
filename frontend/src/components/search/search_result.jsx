@@ -5,6 +5,7 @@ import { asArray } from '../../reducers/selectors';
 
 const mapStateToProps = (state) => {
   const ingredients = state.entities.ingredients.list;
+  debugger;
   return {
     ingredients,
     searchQueued: state.entities.ingredients.searchQueued,
@@ -12,6 +13,7 @@ const mapStateToProps = (state) => {
 };
 
 const SearchResult = ({ ingredients, searchQueued }) => {
+  debugger;
   const searchIngredients = ingredients.join(' | ');
   const list = ingredients.join(', ');
   return (

@@ -8,7 +8,7 @@ const ingredientReducer = (state = {}, action) => {
     case RECEIVE_INGREDIENTS:
       return merge({}, state, { list: action.ingredients });
     case TOGGLE_SEARCH_QUEUED:
-      return merge({}, state, { toggleSearchQueued: action.searchQueued });
+      return merge({}, state, { searchQueued: action.searchQueued });
     default:
       return state;
   }
