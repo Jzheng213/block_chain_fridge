@@ -6,7 +6,7 @@ const ingredientReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_INGREDIENTS:
-      return merge({}, state, { ingredient: action.ingredient });
+      return merge({}, state, { list: action.ingredients });
     case TOGGLE_SEARCH_QUEUED:
       return merge({}, state, { toggleSearchQueued: action.searchQueued });
     default:

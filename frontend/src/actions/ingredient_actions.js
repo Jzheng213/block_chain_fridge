@@ -3,7 +3,7 @@ export const TOGGLE_SEARCH_QUEUED = 'TOGGLE_SEARCH_QUEUED';
 
 export const recieveIngredients = ingredients => (
   {
-    type: RECEIVE_INGREDIENT,
+    type: RECEIVE_INGREDIENTS,
     ingredients,
   }
 );

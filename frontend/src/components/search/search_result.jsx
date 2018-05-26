@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 import { asArray } from '../../reducers/selectors';
 
 const mapStateToProps = (state) => {
-  const ingredients = asArray(state.entities.ingredients);
+  const ingredients = state.entities.ingredients.list;
   return {
     ingredients,
-    searchQueued: state.entities.searchQueued,
+    searchQueued: state.entities.ingredients.searchQueued,
   };
 };
 

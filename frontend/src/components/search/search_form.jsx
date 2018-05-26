@@ -3,19 +3,22 @@ import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
 import { connect } from 'react-redux';
 import SearchResult from './search_result';
-import { recieveIngredient, toggleSearchQueued } from '../../actions/ingredient_actions';
+import { recieveIngredients, toggleSearchQueued } from '../../actions/ingredient_actions';
 import './search_form.css';
 
 const mapStateToProps = state => {
+  const ingredients = state.entities.ingredients.list || [];
+  const searchQueued = state.entities.ingredients.searchQueued || false;
   return {
-    ingredients: state.entities.ingredients,
-    searchQueued: state.entities.searchQueued,
+    ingredients,
+    searchQueued,
   }
 }
 
 const mapDispatchToProps = dispatch => (
   {
     updateIngredients: ingredient => dispatch(recieveIngredients(ingredient)),
+    toggleSearchQueued: (bool) => dispatch(toggleSearchQueued(bool)),
   }
 );
 
@@ -28,7 +31,7 @@ class Search extends Component {
 
     handleSearch = (e) => {
       e.preventDefault();
-      this.setState({searchQueued: true});
+      this.props.toggleSearchQueued(true);
     }
 
     handleInput = (e) => {
@@ -59,7 +62,7 @@ class Search extends Component {
             onChange={this.handleInput}
             value={this.state.input} />
           <button type='submit' className='searchButton'>{this.state.buttonLabel}</button>
-          { isEmpty(this.props.ingredients) &&
+          { this.props.ingredients.length !== 0 &&
             <button type='submit' onClick={this.handleSearch} className='searchButton'>search recipes</button>
           }
         </form>
@@ -69,7 +72,8 @@ class Search extends Component {
 }
 
 Search.defaultProps = {
-  ingredients
+  ingredients: [],
 }
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);
