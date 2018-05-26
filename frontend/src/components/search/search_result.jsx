@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { asArray } from '../../reducers/selectors';
+import IngredientItem from '../ingredients/ingredient_item';
 
 const mapStateToProps = (state) => {
   const ingredients = state.entities.ingredients.list;
@@ -16,8 +17,13 @@ const SearchResult = ({ ingredients, searchQueued }) => {
   const list = searchQueued ? ingredients.join(', ') : '';
   return (
     <div>
-      <p>{searchIngredients}</p>
-      {searchQueued && <h2>Search Result with {list}</h2>}
+      <ul>
+        {ingredients.map((ingredient, idx) => (
+          <IngredientItem ingredient={ingredient} index={idx} />
+          ))
+        }
+      </ul>
+      { searchQueued && <h2>Search Result with { list }</h2> }
     </div>
   );
 };
