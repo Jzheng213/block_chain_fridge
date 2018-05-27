@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { removeIngredient } from '../../actions/ingredient_actions';
+import './ingredient_item.css';
 
 const mapDispatchToProps = dispatch => ({
   removeIngredient: idx => dispatch(removeIngredient(idx)),
@@ -9,9 +10,14 @@ const mapDispatchToProps = dispatch => ({
 
 const IngredientItem = ({ ingredient, index, removeIngredient }) => {
   return (
-    <li>
+    <li className="ingredient-item">
       <span>{ ingredient } </span>
-      <button onClick={() => removeIngredient(index)}>X</button>
+      <span className="ingredient-border">|</span>
+      <button
+        className="ingredient-remove"
+        onClick={() => removeIngredient(index)}
+      >X
+      </button>
     </li>
   );
 };

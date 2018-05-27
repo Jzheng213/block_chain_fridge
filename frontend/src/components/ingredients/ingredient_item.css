@@ -1,0 +1,20 @@
+.ingredient-item{
+  color: grey;
+  background-color: #fafaf5;
+  border: 1px solid grey;
+  padding: 2px 4px;
+  border-radius: 5px;
+}
+
+.ingredient-remove{
+  color: grey;
+  background-color: #fafaf5;
+  border: none;
+  font-size: 10px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.ingredient-border{
+  vertical-align: top;
+}

@@ -1,0 +1,9 @@
+.ingredients{
+  display: flex;
+  list-style-type: none;
+  flex-direction: row;
+}
+
+.ingredients li{
+  margin: 0px 2px;
+}
