@@ -10,7 +10,7 @@ config/config.json
 /node_modules
 
 #api-keys
-/frontend/secret.js
+/frontend/src/secret.js
 
 # testing
 /coverage
