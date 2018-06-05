@@ -1,0 +1,22 @@
+.recipe-list {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 20px;
+}
+
+@media only screen and (min-width: 632px) {
+  .recipe-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+  }
+}
+
+@media only screen and (min-width: 953px) {
+  .recipe-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+  }
+}

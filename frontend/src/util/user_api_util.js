@@ -1,6 +1,5 @@
 export const fetchUsers = () => {
   return fetch('/api/users').then(res => {
-    console.log(res);
     return res.json()}
   );
 };

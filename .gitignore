@@ -9,6 +9,9 @@ config/config.json
 # dependencies
 /node_modules
 
+#api-keys
+/frontend/secret.js
+
 # testing
 /coverage
 

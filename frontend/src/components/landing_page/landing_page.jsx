@@ -5,7 +5,8 @@ import './landing_page.css';
 import Login from '../auth/login_form';
 import NavBar from '../navbar/navbar';
 import SearchForm from '../search/search_form';
-import SearchResult from '../search/search_result';
+import SearchList from '../search/search_list';
+import SearchResult from '../recipes/recipe_list';
 import { fetchCurrentUser } from '../../actions/auth_actions';
 import { fetchUsers } from '../../actions/user_actions';
 
@@ -39,6 +40,7 @@ class LandingPage extends Component {
           <NavBar />
           <h1>PANTRY</h1>
           <SearchForm />
+          <SearchList />
           <SearchResult />
         </div>
       )

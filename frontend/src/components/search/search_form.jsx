@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
 import { connect } from 'react-redux';
-import SearchResult from './search_result';
+import SearchResult from './search_list';
 import { recieveIngredients, toggleSearchQueued } from '../../actions/ingredient_actions';
+import { searchRecipesByIngredients } from '../../actions/recipe_actions';
 import './search_form.css';
 
 const mapStateToProps = state => {
@@ -19,6 +20,7 @@ const mapDispatchToProps = dispatch => (
   {
     updateIngredients: ingredient => dispatch(recieveIngredients(ingredient)),
     toggleSearchQueued: (bool) => dispatch(toggleSearchQueued(bool)),
+    searchRecipes: (query) => dispatch(searchRecipesByIngredients(query)),
   }
 );
 
@@ -31,6 +33,11 @@ class Search extends Component {
     handleSearch = (e) => {
       e.preventDefault();
       this.props.toggleSearchQueued(true);
+      this.props.searchRecipes(this.queryBuilder());
+    }
+
+    queryBuilder = () => {
+      const ingredientList = this.props.ingredients.join('+');
     }
 
     handleInput = (e) => {

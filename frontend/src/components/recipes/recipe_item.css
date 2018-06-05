@@ -1,0 +1,29 @@
+.recipe-item{
+  display: grid;
+  grid-template-columns: 29% 10% auto;
+  grid-template-areas:
+  'title title .'
+  'image image image'
+  'missing likes .';
+}
+
+.recipe-item-link {
+  grid-area: title;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 20px;
+  color: black;
+}
+
+.recipe-item-image {
+  grid-area: image;
+  max-width: 311px;
+}
+
+.recipe-item-missing {
+  grid-area: missing;
+}
+
+.recipe-item-likes {
+  grid-area: likes;
+}
