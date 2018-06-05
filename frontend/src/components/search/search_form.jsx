@@ -37,7 +37,7 @@ class Search extends Component {
     }
 
     queryBuilder = () => {
-      const ingredientList = this.props.ingredients.join('+');
+      return this.props.ingredients.join('+');
     }
 
     handleInput = (e) => {
