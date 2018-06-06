@@ -1,6 +1,25 @@
+.navbar{
+  z-index: 10;
+  top: 0px;
+  position: fixed;
+  background: white;
+  width: 100%;
+  display: grid;
+  align-items: center;
+  grid-gap: 10px;
+  grid-template-areas:
+  "NavSearchBar"
+  "navWelcome"
+  "session";
+}
+
 .navWelcome{
   grid-area: navWelcome;
   color: grey;
+}
+
+.navbar .search-form {
+  grid-area: navSearchBar;
 }
 
 .session{
@@ -12,21 +31,14 @@
   cursor: pointer;
 }
 
-.navbar{
-  display: grid;
-  align-items: center;
-  grid-gap: 10px;
-  grid-template-areas:
-  "navWelcome"
-  "session";
-}
 
 @media only screen and (min-width: 500px) {
   .navbar{
+    position: fixed;
     display: grid;
     align-items: center;
-    grid-template-columns: auto 20% 5em;
+    grid-template-columns: auto 20% 5em 5em;
     grid-template-areas:
-    ". navWelcome session";
+    "NavSearchBar . navWelcome session";
   }
 }

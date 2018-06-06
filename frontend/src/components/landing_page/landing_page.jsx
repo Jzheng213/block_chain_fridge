@@ -36,7 +36,7 @@ class LandingPage extends Component {
 
     render(){
       return(
-        <div>
+        <div className="landing-page">
           <NavBar />
           <h1>PANTRY</h1>
           <SearchForm />

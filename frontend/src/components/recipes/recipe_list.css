@@ -1,22 +1,31 @@
 .recipe-list {
+  padding: 0px 10px;
   list-style-type: none;
   display: grid;
   grid-template-columns: 100%;
   grid-gap: 20px;
 }
 
-@media only screen and (min-width: 632px) {
+@media only screen and (min-width: 500px) {
   .recipe-list {
+    grid-gap: 20px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 10px;
   }
 }
 
-@media only screen and (min-width: 953px) {
+@media only screen and (min-width: 720px) {
   .recipe-list {
+    grid-gap: 20px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
+  }
+}
+
+@media only screen and (min-width: 1080px) {
+  .recipe-list {
+    grid-gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
   }
 }

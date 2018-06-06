@@ -60,7 +60,7 @@ class Search extends Component {
     const buttonLabel = ingredients.length === 0 ? 'What do you have?' : 'add more ingredients';
     return(
       <div>
-        <form onSubmit={this.handleAddIngredients}>
+        <form className="search-form" onSubmit={this.handleAddIngredients}>
           <label htmlFor='ingredient'></label>
           <input className='searchBar'
             placeholder='add ingredients'

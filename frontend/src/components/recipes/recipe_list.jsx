@@ -13,7 +13,6 @@ const mapStateToProps = (state) => {
 };
 
 const RecipeList = ({ recipes }) => {
-  debugger;
   return (
     <ul className="recipe-list">
       {
